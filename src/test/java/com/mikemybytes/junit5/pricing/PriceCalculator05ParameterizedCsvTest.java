@@ -21,15 +21,17 @@ class PriceCalculator05ParameterizedCsvTest {
         assertThat(effectivePrice.amount()).isEqualTo(Amount.of("10.00"));
     }
 
+    // TODO: what about parameter names?
+
     @ParameterizedTest
-    @CsvSource(delimiter = '|', value = {
-            "5.99 | 5.99",
-            "10.99 | 56.99"
-    })
-    void fallsBackToMinimalPriceWhenNecessary(String regular, String discount) {
+    @CsvSource(delimiter = '|', textBlock = """
+             5.99 |  5.99
+            10.99 | 56.99
+            """)
+    void fallsBackToMinimalPriceWhenNecessary(Amount regular, Amount discount) {
         // given
-        var regularPrice = new Price("Regular", Amount.of(regular));
-        var campaign = new Campaign("Test Campaign", Amount.of(discount));
+        var regularPrice = new Price("Regular", regular);
+        var campaign = new Campaign("Test Campaign", discount);
         // when
         Price effectivePrice = calculator.calculate(regularPrice, campaign);
         // then

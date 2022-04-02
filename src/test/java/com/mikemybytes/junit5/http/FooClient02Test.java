@@ -13,12 +13,15 @@ class FooClient02Test extends BaseWireMockTest {
     void getsFooFromRemoteServer() {
         System.out.println("Running test");
 
+        // given
         var client = new FooClient(wireMockServer.baseUrl());
         wireMockServer.stubFor(
                 WireMock.get(WireMock.urlEqualTo("/foo"))
                         .willReturn(WireMock.aResponse().withBody("bar"))
         );
+        // when
         String foo = client.getFoo();
+        // then
         assertThat(foo).isEqualTo("bar");
     }
 

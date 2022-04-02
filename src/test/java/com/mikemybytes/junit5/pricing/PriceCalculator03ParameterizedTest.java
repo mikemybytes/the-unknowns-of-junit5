@@ -12,6 +12,9 @@ class PriceCalculator03ParameterizedTest {
 
     private final PriceCalculator calculator = new PriceCalculator();
 
+    // + type safety!
+    // + (a bit) better test case names
+
     record PricingTestCase(Amount price, Amount discount, Amount expected) {
     }
 

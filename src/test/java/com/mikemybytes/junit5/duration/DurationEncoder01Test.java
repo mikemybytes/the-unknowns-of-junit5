@@ -9,11 +9,13 @@ class DurationEncoder01Test {
 
     private final DurationEncoder encoder = new DurationEncoder();
 
+    // TODO: how to emphasise mapping/encoding?
+
     @ParameterizedTest
-    @CsvSource(delimiter = '|', textBlock = """
-            # seconds  |   ISO8601
-                   15  |     PT15S
-                  180  |      PT3M
+    @CsvSource(delimiter = '|', useHeadersInDisplayName = true, textBlock = """
+               seconds |   ISO8601
+                    15 |     PT15S
+                   180 |      PT3M
                   8047 | PT2H14M7S
                 172800 |     PT48H
             """

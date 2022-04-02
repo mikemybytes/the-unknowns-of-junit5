@@ -11,15 +11,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 class FooClient04Test {
 
     @Test
-    void getsFooFromRemoteServer(WireMockServer wireMock) { // it's magic!
+    void getsFooFromRemoteServer(WireMockServer wireMock) { // injected by the extension!
         System.out.println("Running test");
 
+        // given
         var client = new FooClient(wireMock.baseUrl());
         wireMock.stubFor(
                 WireMock.get(WireMock.urlEqualTo("/foo"))
                         .willReturn(WireMock.aResponse().withBody("bar"))
         );
+        // when
         String foo = client.getFoo();
+        // then
         assertThat(foo).isEqualTo("bar");
     }
 

@@ -1,6 +1,6 @@
-
 package com.mikemybytes.junit5.pricing;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -12,6 +12,7 @@ class PriceCalculator07ParameterizedCsvTest {
     private final PriceCalculator calculator = new PriceCalculator();
 
     @Test
+    @DisplayName("applies discount to the regular price")
     void appliesDiscountToRegularPrice() {
         // given
         var regularPrice = new Price("Regular", Amount.of("10.99"));
@@ -22,16 +23,17 @@ class PriceCalculator07ParameterizedCsvTest {
         assertThat(effectivePrice.amount()).isEqualTo(Amount.of("10.00"));
     }
 
-    @ParameterizedTest
+    @DisplayName("falls back to minimal price when ")
+    @ParameterizedTest(name = "{index}: {2}")
     @CsvSource(delimiter = '|', textBlock = """
-               5.99 |  5.99
-              10.99 | 56.99
-            """
-    )
-    void fallsBackToMinimalPriceWhenNecessary(String regular, String discount) {
+            # regular | discount | description
+                5.99  |     5.99 | discount same as the regular price
+               10.99  |    56.99 | discount greater than the regular price
+            """)
+    void fallsBackToMinimalPriceWhenNecessary(Amount regular, Amount discount, String description) {
         // given
-        var regularPrice = new Price("Regular", Amount.of(regular));
-        var campaign = new Campaign("Test Campaign", Amount.of(discount));
+        var regularPrice = new Price("Regular", regular);
+        var campaign = new Campaign("Test Campaign", discount);
         // when
         Price effectivePrice = calculator.calculate(regularPrice, campaign);
         // then

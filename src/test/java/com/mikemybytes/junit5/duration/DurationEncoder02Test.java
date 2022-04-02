@@ -9,6 +9,8 @@ class DurationEncoder02Test {
 
     private final DurationEncoder encoder = new DurationEncoder();
 
+    // TODO: what about test case names?
+
     @ParameterizedTest
     @CsvSource(delimiterString = "->", useHeadersInDisplayName = true, textBlock = """
                 seconds  -> ISO8601

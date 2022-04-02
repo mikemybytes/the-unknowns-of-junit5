@@ -14,14 +14,17 @@ class FooClient03Test {
     void getsFooFromRemoteServer() {
         System.out.println("Running test");
 
-        WireMockServer wireMock = HttpTest01Extension.wireMock(); // a bit ugly...
+        // given
+        WireMockServer wireMock = HttpTest01Extension.wireMock(); // TODO: is there a better way?
 
         var client = new FooClient(wireMock.baseUrl());
         wireMock.stubFor(
                 WireMock.get(WireMock.urlEqualTo("/foo"))
                         .willReturn(WireMock.aResponse().withBody("bar"))
         );
+        // when
         String foo = client.getFoo();
+        // then
         assertThat(foo).isEqualTo("bar");
     }
 

@@ -12,6 +12,10 @@ class PriceCalculator02ParameterizedTest {
 
     private final PriceCalculator calculator = new PriceCalculator();
 
+    // + less structural duplication
+    // - descriptive test case names got lost
+    // - Arguments type...
+
     static Stream<Arguments> testCases() {
         return Stream.of(
                 Arguments.of(Amount.of("10.99"), Amount.of("0.99"), Amount.of("10.00")),

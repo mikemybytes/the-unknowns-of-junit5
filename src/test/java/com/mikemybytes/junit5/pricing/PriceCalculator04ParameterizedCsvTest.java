@@ -21,11 +21,15 @@ class PriceCalculator04ParameterizedCsvTest {
         assertThat(effectivePrice.amount()).isEqualTo(Amount.of("10.00"));
     }
 
+    // + concise!
+    // ? readability
+    // - test case names
+
     @ParameterizedTest
     @CsvSource(value = {
             "5.99, 5.99",
             "10.99, 56.99"
-    })
+    }) // TODO: 3 readability improvements, 1 "magic" trick
     void fallsBackToMinimalPriceWhenNecessary(String regular, String discount) {
         // given
         var regularPrice = new Price("Regular", Amount.of(regular));
