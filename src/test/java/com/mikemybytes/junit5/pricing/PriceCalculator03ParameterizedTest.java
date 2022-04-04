@@ -14,6 +14,7 @@ class PriceCalculator03ParameterizedTest {
 
     // + type safety!
     // + (a bit) better test case names
+    // - boring...
 
     record PricingTestCase(Amount price, Amount discount, Amount expected) {
     }

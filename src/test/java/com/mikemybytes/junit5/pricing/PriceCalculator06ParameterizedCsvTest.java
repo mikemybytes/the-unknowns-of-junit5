@@ -23,13 +23,13 @@ class PriceCalculator06ParameterizedCsvTest {
         assertThat(effectivePrice.amount()).isEqualTo(Amount.of("10.00"));
     }
 
-    // TODO: what about test case names?
+    // TODO: how to make the 'description' a part of the test case name?
 
     @ParameterizedTest
     @CsvSource(delimiter = '|', textBlock = """
-            # regular | discount
-                 5.99 |     5.99
-                10.99 |    56.99
+            # regular | discount | description
+                 5.99 |     5.99 | discount same as the regular price
+                10.99 |    56.99 | discount greater than the regular price
             """)
     void fallsBackToMinimalPriceWhenNecessary(Amount regular, Amount discount) {
         // given

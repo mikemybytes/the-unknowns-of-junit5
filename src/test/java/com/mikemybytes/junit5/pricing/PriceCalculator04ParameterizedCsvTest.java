@@ -25,11 +25,13 @@ class PriceCalculator04ParameterizedCsvTest {
     // ? readability
     // - test case names
 
+    // TODO: 3 readability improvements, 1 "magic" trick
+
     @ParameterizedTest
     @CsvSource(value = {
             "5.99, 5.99",
             "10.99, 56.99"
-    }) // TODO: 3 readability improvements, 1 "magic" trick
+    })
     void fallsBackToMinimalPriceWhenNecessary(String regular, String discount) {
         // given
         var regularPrice = new Price("Regular", Amount.of(regular));
