@@ -10,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 interface ComparableContract<T extends Comparable<T>> {
 
+    // generic test case representation
     record ComparableTestCase<T>(T smallest, T middle, T greatest) {
         List<T> values() {
             return List.of(smallest, middle, greatest);
@@ -17,14 +18,6 @@ interface ComparableContract<T extends Comparable<T>> {
     }
 
     ComparableTestCase<T> comparableTestCase();
-
-    private T greatest() {
-        return comparableTestCase().greatest();
-    }
-
-    private T smallest() {
-        return comparableTestCase().smallest();
-    }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2})
@@ -43,6 +36,14 @@ interface ComparableContract<T extends Comparable<T>> {
     default void returnsNegativeWhenComparingToGreater() {
         int result = smallest().compareTo(greatest());
         assertThat(result).isNegative();
+    }
+
+    private T greatest() {
+        return comparableTestCase().greatest();
+    }
+
+    private T smallest() {
+        return comparableTestCase().smallest();
     }
 
 }
