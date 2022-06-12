@@ -7,7 +7,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ExtendWith(HttpTest01Extension.class)
+@ExtendWith(HttpTest01Extension.class) // you can apply multiple @ExtendWith
 class FooClient03Test {
 
     @Test

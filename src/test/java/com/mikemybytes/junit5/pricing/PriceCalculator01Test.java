@@ -8,6 +8,8 @@ class PriceCalculator01Test {
 
     private final PriceCalculator calculator = new PriceCalculator();
 
+    // structural duplication
+
     @Test
     void appliesDiscountToRegularPrice() {
         // given
