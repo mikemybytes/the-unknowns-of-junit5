@@ -14,7 +14,7 @@ class PriceCalculator02ParameterizedTest {
 
     // + less structural duplication
     // - descriptive test case names got lost
-    // - Arguments type (no type safety)
+    // - boring!
 
     static Stream<Arguments> testCases() {
         return Stream.of(

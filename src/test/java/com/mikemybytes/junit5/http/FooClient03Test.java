@@ -7,7 +7,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ExtendWith(HttpTest01Extension.class)
+@ExtendWith(HttpTest01Extension.class) // you can apply multiple @ExtendWith
 class FooClient03Test {
 
     @Test
@@ -15,7 +15,7 @@ class FooClient03Test {
         System.out.println("Running test");
 
         // given
-        WireMockServer wireMock = HttpTest01Extension.wireMock(); // TODO: is there a better way?
+        WireMockServer wireMock = HttpTest01Extension.wireMock(); // TODO: is there a better way? (no static call)
 
         var client = new FooClient(wireMock.baseUrl());
         wireMock.stubFor(

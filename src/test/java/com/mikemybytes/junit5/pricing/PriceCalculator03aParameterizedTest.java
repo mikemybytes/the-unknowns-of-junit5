@@ -1,20 +1,19 @@
 package com.mikemybytes.junit5.pricing;
 
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class PriceCalculator03ParameterizedTest {
+class PriceCalculator03aParameterizedTest {
 
     private final PriceCalculator calculator = new PriceCalculator();
 
     // + type safety!
-    // + (a bit) better test case names
-    // - boring...
+    // + (a bit) better test case names (toString())
+    // - still not fancy enough
 
     record PricingTestCase(Amount price, Amount discount, Amount expected) {
     }

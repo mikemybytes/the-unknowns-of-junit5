@@ -1,9 +1,9 @@
 package com.mikemybytes.junit5.comparable;
 
-class PlayerTest implements ComparableContract<Player> {
+class Player01Test extends BaseComparableTest<Player> {
 
     @Override
-    public ComparableTestCase<Player> comparableTestCase() {
+    public ComparableTestCase<Player> getComparableTestCase() {
         return new ComparableTestCase<>(
                 new Player("player1", 1),
                 new Player("player2", 25),

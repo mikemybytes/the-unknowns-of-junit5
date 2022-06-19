@@ -1,6 +1,6 @@
 package com.mikemybytes.junit5.comparable;
 
-class GameMapTest implements ComparableContract<GameMap> {
+class GameMap02Test implements ComparableContract<GameMap> {
 
     @Override
     public ComparableTestCase<GameMap> comparableTestCase() {
